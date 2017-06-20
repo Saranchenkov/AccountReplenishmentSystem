@@ -1,0 +1,22 @@
+
+CREATE TABLE IF NOT EXISTS users(
+  id INT AUTO_INCREMENT,
+  balance DECIMAL(10, 2) DEFAULT 0,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(100) NOT NULL,
+  registerDate DATE DEFAULT CURRENT_DATE(),
+  role ENUM('USER', 'ADMIN'),
+  PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX users_unique_email ON users(email);
+
+CREATE TABLE IF NOT EXISTS `balances`(
+  `id` INT AUTO_INCREMENT,
+  `amount` DECIMAL(10, 2) DEFAULT 0,
+  `date` DATE DEFAULT CURRENT_DATE(),
+  `user_email` VARCHAR(100) NOT NULL,
+  `admin_email` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_email`) REFERENCES users(email) ON DELETE CASCADE
+);

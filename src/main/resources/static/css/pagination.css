@@ -1,0 +1,37 @@
+a{
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pagination{
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+/* GENERAL STYLES */
+
+.pagination{
+    padding: 30px 0;
+}
+
+.pagination a{
+    background-color: #2ecc71;
+    display: inline-block;
+    padding: 10px 18px;
+    color: #575757;
+    font-weight: bold;
+}
+
+/* TWELVE */
+
+.pagination a:first-of-type, .pagination a:last-of-type, .pagination .is-active{
+    color: #fff;
+}
+
+.pagination a:hover:not(.is-active) {
+    background-color: #2fef91;
+}
+

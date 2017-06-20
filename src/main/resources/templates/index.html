@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pagination.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}" />
+    <script type="text/javascript" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/pagination.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/modal.js}" ></script>
+</head>
+<body id="users">
+<h1><span class="blue">&lt;</span>User's balances<span class="blue">&gt;</span> <span class="yellow">Managing</span></h1>
+<a th:href="@{/balances}"><h2>Replenishments book</h2></a>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>Email</h1></th>
+        <th><h1>Balance</h1></th>
+        <th><h1>Registration date</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="pagination">
+</div>
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+            <span>User:   </span>
+            <span id="userEmail"></span>
+
+            <input id="amount" type="number" placeholder="Enter amount"/>
+
+            <button id="putMoney" type="button">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pagination.css}" />
+    <script type="text/javascript" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/pagination.js}" ></script>
+</head>
+<body id="balances">
+<h1><span class="blue">&lt;</span>User's balances<span class="blue">&gt;</span> <span class="yellow">Managing</span></h1>
+<h2>Created with love by Pablo Bla Bla Bla</h2>
+
+<div>
+    <label for="startDate">Date: </label>
+    <input type="date" id="startDate"/>
+    <input type="date" id="endDate"/>
+    <button type="button" id="filter" onclick="filter()">Filter</button>
+</div>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>Admin</h1></th>
+        <th><h1>User</h1></th>
+        <th><h1>Date</h1></th>
+        <th><h1>Balance</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="pagination">
+</div>
+
+</body>
+</html>
