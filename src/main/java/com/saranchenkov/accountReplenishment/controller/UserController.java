@@ -53,6 +53,10 @@ public class UserController {
             LOGGER.error("Unable to update. Balance of User(id={})is null.", id);
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+        if (amount < 0) {
+            LOGGER.error("Amount({}) should be grater than zero", amount);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
         userService.update(newBalance, id);
         LOGGER.info("Updating User with id {}", id);
         balanceService.save(balance);
@@ -79,6 +83,20 @@ public class UserController {
         final Page<Balance> page = balanceService.getFilterPage(pageNumber, startDate, endDate);
 
         return new ResponseEntity<>(page, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/users/search")
+    public ResponseEntity<User> search(@RequestParam("email") String email){
+
+        LOGGER.info("Searching user with email: {} .", email);
+        final User user = userService.getByEmail(email);
+
+        if (user == null) {
+            LOGGER.error("User with email: {} is not found.", email);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     private static List<User> convert(Page<User> page){
