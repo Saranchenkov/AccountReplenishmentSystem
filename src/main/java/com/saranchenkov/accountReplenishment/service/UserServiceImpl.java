@@ -2,6 +2,8 @@ package com.saranchenkov.accountReplenishment.service;
 
 import com.saranchenkov.accountReplenishment.model.User;
 import com.saranchenkov.accountReplenishment.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserServiceImpl implements UserService{
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Autowired
     Environment environment;
 
@@ -28,23 +32,30 @@ public class UserServiceImpl implements UserService{
     }
 
     public User get(Integer id) {
+
+        LOGGER.info("Searching user with id: {}", id);
         return repository.findOne(id);
     }
 
     @Override
     public User getByEmail(String email) {
-        return repository.findByEmail(email);
+        LOGGER.info("Searching user with email: {}", email);
+        User user = repository.findByEmail(email);
+        LOGGER.info("User {} was found.", user);
+        return user;
     }
 
     @Override
     @Transactional
     public User save(User user) {
+        LOGGER.info("Save user: {}", user);
         return repository.save(user);
     }
 
     @Override
     @Transactional
     public void update(double balance, int id) {
+        LOGGER.info("Updating user with id={} and balance={}", id, balance);
         repository.update(balance, id);
     }
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Person</title>
+    <script type="text/javascript" th:src="@{/js/account.js}" ></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttons.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+
+</head>
+<body>
+
+<div th:fragment="logout" sec:authorize="isAuthenticated()">
+    <h1><span class="blue">Logged in user: </span><span class="yellow" sec:authentication="name"></span>
+        <br/>
+        <span class="blue">Roles: </span><span class="yellow" sec:authentication="principal.authorities"></span></h1>
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input class="logout" type="submit" value="Logout" />
+        </form>
+    </div>
+</div>
+
+<h1 class="yellow" id="userEmail"></h1>
+<h1 class="yellow" id="userBalance"></h1>
+</body>
+</html>

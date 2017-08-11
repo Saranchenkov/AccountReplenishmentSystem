@@ -26,8 +26,8 @@ function sendPostRequest(userTrNode){
         adminEmail : "ivan.saranchenkov@gmail.com"
     };
     var userId = userTrNode.getAttribute("id");
-    var newBalance = parseInt(userTrNode.childNodes[1].innerHTML) + parseInt(amount);
-    var url = "/user/" + userId + "?amount=" + amount + "&newBalance=" + newBalance;
+    var newBalance = parseFloat(userTrNode.childNodes[1].innerHTML) + parseFloat(amount);
+    var url = "/admin/user/" + userId + "?amount=" + amount + "&newBalance=" + newBalance;
 
     xhttpModal.open("POST", url, true);
     xhttpModal.setRequestHeader("Content-type", "application/json");

@@ -33,16 +33,11 @@ public class JpaConfiguration {
 
     @Autowired
     private Environment environment;
-
-//    @Value("${spring.datasource.maxPoolSize}")
-//    private int maxPoolSize;
-
-    /*
-     * Populate SpringBoot DataSourceProperties object directly from application.yml
-     * based on prefix.Thanks to .yml, Hierachical data is mapped out of the box with matching-name
-     * properties of DataSourceProperties object].
-     */
-
+/*
+ * Populate SpringBoot DataSourceProperties object directly from application.yml
+ * based on prefix.Thanks to .yml, Hierachical data is mapped out of the box with matching-name
+ * properties of DataSourceProperties object].
+ */
 /*
     DataSourceProperties.class already contain @ConfigurationProperties(prefix = "spring.datasource") annotation
 */
@@ -70,18 +65,6 @@ public class JpaConfiguration {
 
         return dataSource;
     }
-
-//    @Bean
-//    public DataSourceInitializer dataSourceInitializer() {
-//        ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-//        resourceDatabasePopulator.addScript(new ClassPathResource("/data.sql"));
-//
-//        DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
-//        dataSourceInitializer.setDataSource(dataSource());
-//        dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
-//        DatabasePopulatorUtils.execute(resourceDatabasePopulator, dataSource());
-//        return dataSourceInitializer;
-//    }
 
     /*
      * Entity Manager Factory setup.

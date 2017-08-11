@@ -9,7 +9,7 @@ var xhttp = new XMLHttpRequest();
 window.onload = function () {
     entity = document.getElementsByTagName("body")[0].getAttribute("id");
     console.log(entity);
-    xhttp.open("GET", "/" + entity + "/0", true);
+    xhttp.open("GET", "/admin/" + entity + "/0", true);
     xhttp.send();
 };
 
@@ -76,7 +76,7 @@ function getFormattedDate(date) {
 function filter() {
     var startDate = document.getElementById("startDate").value;
     var endDate = document.getElementById("endDate").value;
-    var url = "/balances/filter/0?startDate=" + startDate + "&endDate=" + endDate;
+    var url = "/admin/balances/filter/0?startDate=" + startDate + "&endDate=" + endDate;
     xhttp.open("GET", url, true);
     xhttp.send();
 }
@@ -85,7 +85,7 @@ function filter() {
 
 function search() {
     var email = document.getElementById("email").value;
-    var url = "/users/search?email=" + email;
+    var url = "/admin/users/search?email=" + email;
     xhttp.open("GET", url, true);
     xhttp.send();
 }

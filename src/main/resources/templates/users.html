@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pagination.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modal.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttons.css}" />
+    <script type="text/javascript" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/pagination.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/modal.js}" ></script>
+</head>
+<body id="users">
+<div th:fragment="logout" sec:authorize="isAuthenticated()">
+    Logged in user: <span sec:authentication="name"></span> |
+    Roles: <span sec:authentication="principal.authorities"></span>
+    <div>
+        <form action="#" th:action="@{/logout}" method="post">
+            <input class="logout" type="submit" value="Logout" />
+        </form>
+    </div>
+</div>
+<button onclick="window.history.back()"><h2>Back</h2></button>
+
+<h1><span class="blue">&lt;</span>User's balances<span class="blue">&gt;</span> <span class="yellow">Managing</span></h1>
+<a th:href="@{/admin/balances}"><h1>Replenishments book</h1></a>
+
+<div>
+    <label for="email">Email: </label>
+    <input type="email" id="email"/>
+    <input type="submit" id="search" onclick="search()" value="Search"/>
+</div>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>Email</h1></th>
+        <th><h1>Balance</h1></th>
+        <th><h1>Registration date</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div class="pagination">
+</div>
+
+<div id="replenishment" class="modal">
+        <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+            <span>User:   </span>
+            <span id="userEmail"></span>
+            <input id="amount" type="number" placeholder="Enter amount" min="0"/>
+            <button id="putMoney" type="button">Submit</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

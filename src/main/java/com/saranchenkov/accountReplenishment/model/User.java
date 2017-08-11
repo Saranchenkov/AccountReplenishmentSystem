@@ -1,9 +1,10 @@
 package com.saranchenkov.accountReplenishment.model;
 
-import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -18,25 +19,28 @@ public class User {
     private Integer id;
 
     @Column(unique = true)
+    @Email(message = "Invalid email address.")
+    @NotBlank
     private String email;
 
+    @NotBlank
+    @Size(min = 6, max = 20, message = "Password size must be between 6 and 20")
     private String password;
 
     @Column(name = "registerDate", columnDefinition = "date default current_date()")
-//    @Type(type = "java.time.LocalDate")
-    private Date registerDate;
+    private Date registerDate = new Date();
 
-    private Role role;
+    private Role role = Role.USER;
 
-    @Column(columnDefinition = "decimal(10, 2) default 0.00")
-    private Double balance;
+    @Column(columnDefinition = "decimal(10, 2) default '0.00'")
+    private Double balance = 0.00;
 
-/*
-    public User(User u){
-        this(u.getId(), u.getEmail(), u.getPassword(), u.getBalance(), u.getRegisterDate(), u.getRole());
-    }
-*/
     public User(){}
+
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
 
     public User(Integer id, String email, String password, Double balance, Date registerDate, Role role) {
         this.id = id;

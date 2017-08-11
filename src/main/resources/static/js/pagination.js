@@ -31,7 +31,7 @@ function sendRequest(innerHTML) {
 
 // -----Sends GET request to get page with number "num"------------------
 function request(num) {
-    xhttp.open("GET", "/" + entity + "/" + num, true);
+    xhttp.open("GET", "/admin/" + entity + "/" + num, true);
     xhttp.send();
 }
 

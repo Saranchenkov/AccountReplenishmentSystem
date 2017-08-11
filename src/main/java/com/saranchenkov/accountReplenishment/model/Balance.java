@@ -18,7 +18,6 @@ public class Balance {
     private Double amount;
 
     @Column(name = "date", columnDefinition = "date default current_date()")
-    //    @Type(type = "java.time.LocalDate")
     private Date date;
 
     @Column(name = "user_email")

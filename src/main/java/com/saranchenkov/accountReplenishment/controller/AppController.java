@@ -10,13 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AppController {
 
-    @GetMapping("/")
+    @GetMapping({"/", "/login"})
     public String start(){
         return "index";
     }
 
-    @GetMapping("/balances")
+    @GetMapping("/admin/users")
+    public String users(){
+        return "users";
+    }
+
+    @GetMapping("/admin/balances")
     public String balances(){
         return "balances";
+    }
+
+    @GetMapping("/user/account")
+    public String user(){
+        return "account";
     }
 }
